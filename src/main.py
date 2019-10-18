@@ -4,15 +4,7 @@ from pygame.locals import *
 from constants import *
 import assets
 from map import Map
-
-# see if we can load more than standard BMP
-if not pygame.image.get_extended():
-    raise SystemExit("Sorry, extended image module required")
-
-
-# game constants
-SCORE = 0
-
+from score import Score, SCORE
 
 # each type of game object gets an init and an
 # update function. the update function is called
@@ -22,22 +14,9 @@ SCORE = 0
 # update, since it is passed extra information about
 # the keyboard
 
-class Score(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.font = pygame.font.Font(None, 20)
-        self.font.set_italic(1)
-        self.color = Color("white")
-        self.lastscore = -1
-        self.update()
-        self.rect = self.image.get_rect().move(10, 450)
-
-    def update(self):
-        if SCORE != self.lastscore:
-            self.lastscore = SCORE
-            msg = "Score: %d" % SCORE
-            self.image = self.font.render(msg, 0, self.color)
-
+# see if we can load more than standard BMP
+if not pygame.image.get_extended():
+    raise SystemExit("Sorry, extended image module required")
 
 def main(winstyle=0):
     # Initialize pygame
@@ -48,9 +27,7 @@ def main(winstyle=0):
         print("Warning, no sound")
         pygame.mixer = None
 
-    fullscreen = False
     # Set the display mode
-    winstyle = 0  # |FULLSCREEN
     bestdepth = pygame.display.mode_ok(SCREEN.size, winstyle, 32)
     screen = pygame.display.set_mode(SCREEN.size, winstyle, bestdepth)
 
@@ -91,12 +68,11 @@ def main(winstyle=0):
 
     # initialize our starting sprites
     global SCORE
-    player = Map()
+    map = Map()
     if pygame.font:
         all.add(Score())
 
-    while player.alive():
-
+    while map.alive():
         # get input
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
@@ -111,11 +87,11 @@ def main(winstyle=0):
 
         # handle player input
         direction = keystate[K_RIGHT] - keystate[K_LEFT]
-        player.move(direction)
+        map.move(direction)
         firing = keystate[K_SPACE]
-        if not player.reloading and firing:
+        if not map.reloading and firing:
             shoot_sound.play()
-        player.reloading = firing
+        map.reloading = firing
 
         # draw the scene
         dirty = all.draw(screen)
@@ -128,7 +104,6 @@ def main(winstyle=0):
         pygame.mixer.music.fadeout(1000)
     pygame.time.wait(1000)
     pygame.quit()
-
 
 # call the "main" function if running this script
 if __name__ == "__main__":
