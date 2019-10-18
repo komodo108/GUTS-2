@@ -1,5 +1,10 @@
 {
-    "workbench.colorCustomizations": {
-        "tab.unfocusedActiveBorder": "#fff0"
+    "python.venvPath": "/Users/donald108/.local/share/virtualenvs/GUTS-2-k17pXVva",
+    "python.pythonPath": "/Users/donald108/.local/share/virtualenvs/GUTS-2-k17pXVva/bin/python",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
     }
 }
