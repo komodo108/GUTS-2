@@ -1,10 +1,15 @@
 {
     "python.venvPath": "/Users/donald108/.local/share/virtualenvs/GUTS-2-k17pXVva",
-    "python.pythonPath": "/Users/donald108/.local/share/virtualenvs/GUTS-2-k17pXVva/bin/python",
+    "python.pythonPath": "/home/ghexor/.local/share/virtualenvs/GUTS-2-QJ0r34ta/bin/python",
     "files.exclude": {
         "**/.classpath": true,
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
-    }
+    },
+    "workbench.colorCustomizations": {
+        "tab.unfocusedActiveBorder": "#fff0"
+    },
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
