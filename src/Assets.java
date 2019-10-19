@@ -11,7 +11,7 @@ public class Assets {
         return singleton;
     }
 
-    private PImage background, plastic;
+    private PImage background, plastic, glass, paper;
     private PApplet applet;
     public final int ROWS = 51, COLUMNS = 78;
 
@@ -20,10 +20,20 @@ public class Assets {
         this.applet = applet;
         background = applet.loadImage("../data/worldmap.png");
         plastic = applet.loadImage("../data/plastic.jpg");
+        glass = applet.loadImage("../data/glass.jpg");
+        paper = applet.loadImage("../data/paper.jpg");
     }
 
     public PImage getPlastic(){
         return plastic;
+    }
+
+    public PImage getGlass(){
+        return glass;
+    }
+
+    public PImage getPaper(){
+        return paper;
     }
 
     public PImage getBackground() {
