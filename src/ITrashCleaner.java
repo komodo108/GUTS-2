@@ -17,4 +17,10 @@ public interface ITrashCleaner {
     // Returns how damaged this unit is, destoryed when 0
     int getPercentage();
 
+    // update the PObject
+    void uodate();
+
+    // render the PObject
+    void render();
+
 }
