@@ -35,18 +35,31 @@ public class Map extends PObject {
     void move(Direction dir) {
         switch (dir) {
             case UP:
-                if(pos.y < -50) pos.y += 40;
+                if(pos.y < -50) {
+                	pos.y += 40;
+                	applet.rect(pos.x, pos.y, 64, 64);
+                }
                 break;
             case DOWN:
-                if(pos.y > -map.height + 650) pos.y -= 40;
+                if(pos.y > -map.height + 650) {
+                	pos.y -= 40;
+                	applet.rect(pos.x, pos.y, 64, 64);
+                }
                 break;
             case LEFT:
-                if(pos.x < -50) pos.x += 40;
+                if(pos.x < -50) {
+                	pos.x += 40;
+                	applet.rect(pos.x, pos.y, 64, 64);
+                }
                 break;
             case RIGHT:
-                if(pos.x > -map.width + 850) pos.x -= 40;
+                if(pos.x > -map.width + 850) {
+                	pos.x -= 40;
+                	applet.rect(pos.x, pos.y, 64, 64);
+                }
                 break;
         }
+        
         System.out.println(pos);
     }
 
@@ -58,5 +71,6 @@ public class Map extends PObject {
                 cells[i][j].render();
             }
         }
+        
     }
 }
