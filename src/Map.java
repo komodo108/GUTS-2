@@ -42,7 +42,8 @@ public class Map extends PObject {
             case RIGHT:
                 if(pos.x > -map.width + 850) pos.x -= 40;
                 break;
-        } System.out.println(pos);
+        }
+        System.out.println(pos);
     }
 
     @Override
