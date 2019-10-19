@@ -33,7 +33,7 @@ public class Map extends PObject {
     }
 
     public void mouse(int x, int y) {
-        cells[0][0].cool();
+        cells[(ROWS - x)][(COLUMNS - y)].cool();
     }
 
     void moveCells(int x, int y) {
