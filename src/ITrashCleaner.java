@@ -14,7 +14,7 @@ public interface ITrashCleaner {
     // e.g. glass cleaner is good at helping cardboard
     void helpAround(ITrashCleaner cleaner);
 
-    // Returns how damaged this unit is, destoryed when 0
+    // Returns how damaged this unit is, destroyed when 0
     int getPercentage();
 
     // update the PObject

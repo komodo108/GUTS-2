@@ -24,5 +24,8 @@ public class Plastic extends ATrashCleaner implements ITrashCleaner {
         else if (cleaner instanceof Paper) {
             efficiency *= 1.2;
         }
+        else if (cleaner instanceof Gwaste) {
+            efficiency *= 0.2;
+        }
     }
 }

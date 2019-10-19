@@ -11,7 +11,7 @@ public class Assets {
         return singleton;
     }
 
-    private PImage background, plastic, glass, paper;
+    private PImage background, plastic, glass, paper, gwaste;
     private PApplet applet;
     public final int ROWS = 51, COLUMNS = 78;
 
@@ -19,9 +19,10 @@ public class Assets {
         // Setup assets
         this.applet = applet;
         background = applet.loadImage("../data/worldmap.png");
-        plastic = applet.loadImage("../data/plastic.jpg");
-        glass = applet.loadImage("../data/glass.jpg");
-        paper = applet.loadImage("../data/paper.jpg");
+        plastic = applet.loadImage("../data/plastic.png");
+        glass = applet.loadImage("../data/glass.png");
+        paper = applet.loadImage("../data/paper.png");
+        gwaste = applet.loadImage("../data/gwaste.png");
     }
 
     public PImage getPlastic(){
@@ -34,6 +35,10 @@ public class Assets {
 
     public PImage getPaper(){
         return paper;
+    }
+
+    public PImage getGwaste(){
+        return gwaste;
     }
 
     public PImage getBackground() {
