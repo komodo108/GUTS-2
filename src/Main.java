@@ -59,6 +59,6 @@ public class Main extends PApplet {
 
     @Override
     public void mouseReleased() {
-
+        map.mouse(mouseX, mouseY);
     }
 }

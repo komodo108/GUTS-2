@@ -20,7 +20,7 @@ public class Map extends PObject {
             for(int j = 0; j < COLUMNS; j++) {
                 cells[i][j] = new Cell(applet, null, i*64, j*64);
             }
-        }
+        } moveCells(-map.width / 2, -map.height / 2);
     }
 
     @Override
@@ -32,39 +32,41 @@ public class Map extends PObject {
         }
     }
 
+    public void mouse(int x, int y) {
+        cells[0][0].cool();
+    }
+
+    void moveCells(int x, int y) {
+        for(int i = 0; i < ROWS; i++) {
+            for(int j = 0; j < COLUMNS; j++) {
+                cells[i][j].move(x, y);
+            }
+        }
+    }
+
     void move(Direction dir) {
         switch (dir) {
             case UP:
                 if(pos.y < -50) {
                 	pos.y += 40;
-                	applet.rect(pos.x, pos.y, 64, 64);
-                	applet.translate(0, +40);
-                }
-                break;
+                    moveCells(0, 40);
+                } break;
             case DOWN:
                 if(pos.y > -map.height + 650) {
                 	pos.y -= 40;
-                	applet.rect(pos.x, pos.y, 64, 64);
-                	applet.translate(0, -40);
-                }
-                break;
+                	moveCells(0, -40);
+                } break;
             case LEFT:
                 if(pos.x < -50) {
                 	pos.x += 40;
-                	applet.rect(pos.x, pos.y, 64, 64);
-                	applet.translate(40, 0);
-                }
-                break;
+                	moveCells(40, 0);
+                } break;
             case RIGHT:
                 if(pos.x > -map.width + 850) {
                 	pos.x -= 40;
-                	applet.rect(pos.x, pos.y, 64, 64);
-                	applet.translate(-40, 0);
-                }
-                break;
+                	moveCells(-40, 0);
+                } break;
         }
-        
-        System.out.println(pos);
     }
 
     @Override
