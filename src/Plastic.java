@@ -1,27 +1,11 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Plastic extends PObject implements ITrashCleaner {
-    private PImage plastic;
+public class Plastic extends ATrashCleaner implements ITrashCleaner {
 
     Plastic(PApplet applet) {
         super(applet);
-        plastic = Assets.getInstance().getPlastic();
-    }
-
-    @Override
-    void update() {
-
-    }
-
-    @Override
-    public void uodate() {
-
-    }
-
-    @Override
-    public void render() {
-        applet.image(plastic, pos.x, pos.y); //scaled
+        image = Assets.getInstance().getPlastic();
     }
 
     @Override
@@ -31,11 +15,14 @@ public class Plastic extends PObject implements ITrashCleaner {
 
     @Override
     public void helpAround(ITrashCleaner cleaner) {
-
-    }
-
-    @Override
-    public int getPercentage() {
-        return 0;
+        if (cleaner instanceof Plastic) {
+            efficiency *= 2;
+        }
+        else if (cleaner instanceof Glass) {
+            efficiency *=.5;
+        }
+        else if (cleaner instanceof Paper) {
+            efficiency *= 1.2;
+        }
     }
 }

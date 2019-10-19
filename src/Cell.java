@@ -21,7 +21,7 @@ public class Cell extends PObject {
     
     @Override
     void update() {
-        if(trash != null) trash.uodate();
+        if(trash != null) trash.update();
     }
 
     @Override
