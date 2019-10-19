@@ -17,7 +17,7 @@ public class Assets {
     public void load(PApplet applet) {
         // Setup assets
         this.applet = applet;
-        background = applet.loadImage("../data/worldmap.jpg");
+        background = applet.loadImage("../data/worldmap.png");
         plastic = applet.loadImage("../data/plastic.jpg");
     }
 
