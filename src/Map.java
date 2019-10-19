@@ -20,8 +20,7 @@ public class Map extends PObject {
             for(int j = 0; j < ROWS; j++) {
                 cells[i][j] = new Cell(applet, null, i*64, j*64);
             }
-        }
-        moveCells(-map.width / 2, -map.height / 2);
+        } moveCells(-map.width / 2, -map.height / 2);
     }
 
     @Override
@@ -34,7 +33,14 @@ public class Map extends PObject {
     }
 
     public void mouse(int x, int y) {
-        cells[(x+(map.width/2))][(y+(map.height/2))].cool();
+        for(int i = 0; i < COLUMNS; i++) {
+            for(int j = 0; j < ROWS; j++) {
+                if(cells[i][j].pos.x >= x - 64 && cells[i][j].pos.x < x && cells[i][j].pos.y >= y - 64 && cells[i][j].pos.y < y) {
+                    cells[i][j].cool();
+                    System.out.println(cells[i][j].pos);
+                }
+            }
+        }
     }
 
     void moveCells(int x, int y) {
