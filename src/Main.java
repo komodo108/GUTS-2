@@ -34,11 +34,26 @@ public class Main extends PApplet {
     }
 
     @Override
-    public void keyReleased() {
+    public void keyPressed() {
         switch (key) {
             // R to rest the game
             case 'r':
                 // Reset
+            case CODED:
+                switch (keyCode) {
+                    case UP:
+                        map.move(Map.Direction.UP);
+                        break;
+                    case DOWN:
+                        map.move(Map.Direction.DOWN);
+                        break;
+                    case LEFT:
+                        map.move(Map.Direction.LEFT);
+                        break;
+                    case RIGHT:
+                        map.move(Map.Direction.RIGHT);
+                        break;
+                }
         }
     }
 
