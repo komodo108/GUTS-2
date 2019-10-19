@@ -1,11 +1,11 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Glass extends ATrashCleaner implements ITrashCleaner {
+public class Gwaste extends ATrashCleaner implements ITrashCleaner {
 
-    Glass(PApplet applet) {
+    Gwaste(PApplet applet) {
         super(applet);
-        image = Assets.getInstance().getGlass();
+        image = Assets.getInstance().getGwaste();
     }
 
     @Override
@@ -15,18 +15,17 @@ public class Glass extends ATrashCleaner implements ITrashCleaner {
 
     @Override
     public void helpAround(ITrashCleaner cleaner) {
-        if (cleaner instanceof Glass) {
+        if (cleaner instanceof Gwaste) {
             efficiency *= 2;
         }
-        else if (cleaner instanceof Paper) {
+        else if (cleaner instanceof Glass) {
             efficiency *=.5;
         }
-        else if (cleaner instanceof Plastic) {
+        else if (cleaner instanceof Paper) {
             efficiency *= 1.2;
         }
-        else if (cleaner instanceof Gwaste) {
+        else if (cleaner instanceof Plastic) {
             efficiency *= 0.2;
         }
     }
-
 }

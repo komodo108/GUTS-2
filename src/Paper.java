@@ -24,6 +24,9 @@ public class Paper extends ATrashCleaner implements ITrashCleaner {
         else if (cleaner instanceof Glass) {
             efficiency *= 1.2;
         }
+        else if (cleaner instanceof Gwaste) {
+            efficiency *= 0.2;
+        }
     }
 
 }
