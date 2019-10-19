@@ -38,24 +38,28 @@ public class Map extends PObject {
                 if(pos.y < -50) {
                 	pos.y += 40;
                 	applet.rect(pos.x, pos.y, 64, 64);
+                	applet.translate(0, +40);
                 }
                 break;
             case DOWN:
                 if(pos.y > -map.height + 650) {
                 	pos.y -= 40;
                 	applet.rect(pos.x, pos.y, 64, 64);
+                	applet.translate(0, -40);
                 }
                 break;
             case LEFT:
                 if(pos.x < -50) {
                 	pos.x += 40;
                 	applet.rect(pos.x, pos.y, 64, 64);
+                	applet.translate(40, 0);
                 }
                 break;
             case RIGHT:
                 if(pos.x > -map.width + 850) {
                 	pos.x -= 40;
                 	applet.rect(pos.x, pos.y, 64, 64);
+                	applet.translate(-40, 0);
                 }
                 break;
         }

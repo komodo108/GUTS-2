@@ -18,7 +18,7 @@ public class Cell extends PObject {
     public ITrashCleaner getTrash() {
         return trash;
     }
-
+    
     @Override
     void update() {
         if(trash != null) trash.uodate();
