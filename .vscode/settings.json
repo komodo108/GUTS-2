@@ -1,9 +1,0 @@
-{
-    "python.pythonPath": "/Users/sarah/.local/share/virtualenvs/GUTS-2-bbQo-q3O/bin/python",
-    "files.exclude": {
-        "**/.classpath": true,
-        "**/.project": true,
-        "**/.settings": true,
-        "**/.factorypath": true
-    }
-}
