@@ -11,12 +11,19 @@ public class Map extends PObject {
     }
 
     private PImage map;
-    private List<PObject> objects = new ArrayList<>();
+    private final int ROWS = Assets.getInstance().ROWS, COLUMNS = Assets.getInstance().COLUMNS;
+    private Cell[][] map = new Cell[ROWS][COLUMNS];
 
     Map(PApplet applet) {
         super(applet);
         map = Assets.getInstance().getBackground();
         pos = new PVector(-map.width / 2f, -map.height / 2f);
+
+        for(int i = 0; i < ROWS; i++) {
+            for(int j = 0; j < COLUMNS; j++) {
+                map[i][j] = new Cell(null);
+            }
+        }
     }
 
     @Override
