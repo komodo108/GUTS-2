@@ -3,8 +3,8 @@ import processing.core.PImage;
 
 public class Plastic extends ATrashCleaner implements ITrashCleaner {
 
-    Plastic(PApplet applet) {
-        super(applet);
+    Plastic(PApplet applet, int x, int y) {
+        super(applet, x, y);
         image = Assets.getInstance().getPlastic();
     }
 

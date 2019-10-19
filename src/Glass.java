@@ -3,8 +3,8 @@ import processing.core.PImage;
 
 public class Glass extends ATrashCleaner implements ITrashCleaner {
 
-    Glass(PApplet applet) {
-        super(applet);
+    Glass(PApplet applet, int x, int y) {
+        super(applet, x, y);
         image = Assets.getInstance().getGlass();
     }
 

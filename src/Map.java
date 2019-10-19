@@ -36,8 +36,8 @@ public class Map extends PObject {
         for(int i = 0; i < COLUMNS; i++) {
             for(int j = 0; j < ROWS; j++) {
                 if(cells[i][j].pos.x >= x - 64 && cells[i][j].pos.x < x && cells[i][j].pos.y >= y - 64 && cells[i][j].pos.y < y) {
-                    cells[i][j].cool();
-                    System.out.println(cells[i][j].pos);
+                    cells[i][j].setTrash(new Plastic(applet, (int) cells[i][j].pos.x, (int) cells[i][j].pos.y));
+                    System.out.println("You clicked on cell [" + i + "][" + j + "]!");
                 }
             }
         }

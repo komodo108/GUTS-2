@@ -3,8 +3,8 @@ import processing.core.PImage;
 
 public class Gwaste extends ATrashCleaner implements ITrashCleaner {
 
-    Gwaste(PApplet applet) {
-        super(applet);
+    Gwaste(PApplet applet, int x, int y) {
+        super(applet, x, y);
         image = Assets.getInstance().getGwaste();
     }
 

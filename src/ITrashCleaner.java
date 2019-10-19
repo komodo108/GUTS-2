@@ -7,6 +7,8 @@ public interface ITrashCleaner {
         CARDBOARD
     }
 
+    void move(int x, int y);
+
     // Works on destroying some of the trash
     void workNext(Trash next);
 

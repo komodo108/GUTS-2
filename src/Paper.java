@@ -3,8 +3,8 @@ import processing.core.PImage;
 
 public class Paper extends ATrashCleaner implements ITrashCleaner {
 
-    Paper(PApplet applet) {
-        super(applet);
+    Paper(PApplet applet, int x, int y) {
+        super(applet, x, y);
         image = Assets.getInstance().getPaper();
     }
 
