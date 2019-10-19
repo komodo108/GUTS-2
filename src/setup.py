@@ -30,10 +30,6 @@ class Setup():
         # create the background, tile the bgd image
         assets.images['bg'] = assets.load_image("background.gif")
         self.background = pygame.Surface(SCREEN.size)
-        for x in range(0, SCREEN.width, assets.images['bg'].get_width()):
-            self.background.blit(assets.images['bg'], (x, 0))
-        self.screen.blit(self.background, (0, 0))
-        pygame.display.flip()
 
         # load the sound effects
         if pygame.mixer:
