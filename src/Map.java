@@ -2,9 +2,6 @@ import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Map extends PObject {
     enum Direction {
         UP, DOWN, LEFT, RIGHT;
@@ -12,7 +9,7 @@ public class Map extends PObject {
 
     private PImage map;
     private final int ROWS = Assets.getInstance().ROWS, COLUMNS = Assets.getInstance().COLUMNS;
-    private Cell[][] map = new Cell[ROWS][COLUMNS];
+    private Cell[][] cells = new Cell[ROWS][COLUMNS];
 
     Map(PApplet applet) {
         super(applet);
@@ -21,7 +18,7 @@ public class Map extends PObject {
 
         for(int i = 0; i < ROWS; i++) {
             for(int j = 0; j < COLUMNS; j++) {
-                map[i][j] = new Cell(null);
+                cells[i][j] = new Cell(null);
             }
         }
     }
@@ -45,8 +42,7 @@ public class Map extends PObject {
             case RIGHT:
                 if(pos.x > -map.width + 850) pos.x -= 40;
                 break;
-        }
-        System.out.println(pos);
+        } System.out.println(pos);
     }
 
     @Override

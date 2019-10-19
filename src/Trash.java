@@ -1,8 +1,10 @@
 import processing.core.PApplet;
-ß
+
+import java.util.List;
+
 public class Trash extends PObject {
 
-    private List<ITrash>
+    private List<ATrash> particles;
 
     Trash(PApplet applet) {
         super(applet);
@@ -10,11 +12,15 @@ public class Trash extends PObject {
 
     @Override
     void update() {
-
+        for(ATrash trash : particles) {
+            trash.update();
+        }
     }
 
     @Override
     void render() {
-
+        for(ATrash trash : particles) {
+            trash.render();
+        }
     }
 }
