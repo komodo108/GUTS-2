@@ -1,9 +1,12 @@
+package trash.clean;
+
+import game.Assets;
 import processing.core.PApplet;
-import processing.core.PImage;
+import trash.trash.Trash;
 
 public class Plastic extends ATrashCleaner implements ITrashCleaner {
 
-    Plastic(PApplet applet, int x, int y) {
+    public Plastic(PApplet applet, int x, int y) {
         super(applet, x, y);
         image = Assets.getInstance().getPlastic();
     }

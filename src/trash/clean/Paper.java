@@ -1,11 +1,14 @@
+package trash.clean;
+
+import game.Assets;
 import processing.core.PApplet;
-import processing.core.PImage;
+import trash.trash.Trash;
 
-public class Glass extends ATrashCleaner implements ITrashCleaner {
+public class Paper extends ATrashCleaner implements ITrashCleaner {
 
-    Glass(PApplet applet, int x, int y) {
+    public Paper(PApplet applet, int x, int y) {
         super(applet, x, y);
-        image = Assets.getInstance().getGlass();
+        image = Assets.getInstance().getPaper();
     }
 
     @Override
@@ -15,13 +18,13 @@ public class Glass extends ATrashCleaner implements ITrashCleaner {
 
     @Override
     public void helpAround(ITrashCleaner cleaner) {
-        if (cleaner instanceof Glass) {
+        if (cleaner instanceof Paper) {
             efficiency *= 2;
         }
-        else if (cleaner instanceof Paper) {
+        else if (cleaner instanceof Plastic) {
             efficiency *=.5;
         }
-        else if (cleaner instanceof Plastic) {
+        else if (cleaner instanceof Glass) {
             efficiency *= 1.2;
         }
         else if (cleaner instanceof Gwaste) {

@@ -1,3 +1,6 @@
+package trash.trash;
+
+import game.PObject;
 import processing.core.PApplet;
 
 import java.util.List;
@@ -11,14 +14,14 @@ public class Trash extends PObject {
     }
 
     @Override
-    void update() {
+    public void update() {
         for(ATrash trash : particles) {
             trash.update();
         }
     }
 
     @Override
-    void render() {
+    public void render() {
         for(ATrash trash : particles) {
             trash.render();
         }

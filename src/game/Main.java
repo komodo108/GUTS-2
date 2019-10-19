@@ -1,9 +1,6 @@
-import processing.core.PApplet;
-import processing.core.PFont;
-import processing.core.PVector;
+package game;
 
-import java.util.ArrayList;
-import java.util.List;
+import processing.core.PApplet;
 
 public class Main extends PApplet {
 

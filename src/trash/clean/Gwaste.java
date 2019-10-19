@@ -1,9 +1,12 @@
+package trash.clean;
+
+import game.Assets;
 import processing.core.PApplet;
-import processing.core.PImage;
+import trash.trash.Trash;
 
 public class Gwaste extends ATrashCleaner implements ITrashCleaner {
 
-    Gwaste(PApplet applet, int x, int y) {
+    public Gwaste(PApplet applet, int x, int y) {
         super(applet, x, y);
         image = Assets.getInstance().getGwaste();
     }

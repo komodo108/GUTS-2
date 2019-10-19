@@ -1,6 +1,9 @@
+package game;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
+import trash.clean.Plastic;
 
 public class Map extends PObject {
     enum Direction {
@@ -24,7 +27,7 @@ public class Map extends PObject {
     }
 
     @Override
-    void update() {
+    public void update() {
         for(int i = 0; i < COLUMNS; i++) {
             for(int j = 0; j < ROWS; j++) {
                 cells[i][j].update();
@@ -77,7 +80,7 @@ public class Map extends PObject {
     }
 
     @Override
-    void render() {
+    public void render() {
         applet.image(map, pos.x, pos.y);
         for(int i = 0; i < COLUMNS; i++) {
             for(int j = 0; j < ROWS; j++) {

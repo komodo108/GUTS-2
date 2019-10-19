@@ -1,15 +1,17 @@
+package game;
+
 import processing.core.PApplet;
 import processing.core.PVector;
 
 public abstract class PObject {
-    PApplet applet;
-    PVector pos;
+    public PApplet applet;
+    public PVector pos;
 
-    PObject(PApplet applet) {
+    public PObject(PApplet applet) {
         this.applet = applet;
         this.pos = new PVector(0, 0);
     }
 
-    abstract void update();
-    abstract void render();
+    public abstract void update();
+    public abstract void render();
 }

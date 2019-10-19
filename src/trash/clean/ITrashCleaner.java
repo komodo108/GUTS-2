@@ -1,3 +1,7 @@
+package trash.clean;
+
+import trash.trash.Trash;
+
 public interface ITrashCleaner {
 
     enum Type {
@@ -19,10 +23,10 @@ public interface ITrashCleaner {
     // Returns how damaged this unit is, destroyed when 0
     int getPercentage();
 
-    // update the PObject
+    // update the game.PObject
     void update();
 
-    // render the PObject
+    // render the game.PObject
     void render();
 
 }
