@@ -15,12 +15,15 @@ public class Paper extends ATrashCleaner implements ITrashCleaner {
 
     @Override
     public void helpAround(ITrashCleaner cleaner) {
-
-    }
-
-    @Override
-    public int getPercentage() {
-        return 0;
+        if (cleaner instanceof Paper) {
+            efficiency *= 2;
+        }
+        else if (cleaner instanceof Plastic) {
+            efficiency *=.5;
+        }
+        else if (cleaner instanceof Glass) {
+            efficiency *= 1.2;
+        }
     }
 
 }
