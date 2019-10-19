@@ -15,7 +15,12 @@ public class Plastic extends PObject implements ITrashCleaner {
     }
 
     @Override
-    void render() {
+    public void uodate() {
+
+    }
+
+    @Override
+    public void render() {
         applet.image(plastic, pos.x, pos.y); //scaled
     }
 

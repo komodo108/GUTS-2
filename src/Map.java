@@ -18,14 +18,18 @@ public class Map extends PObject {
 
         for(int i = 0; i < ROWS; i++) {
             for(int j = 0; j < COLUMNS; j++) {
-                cells[i][j] = new Cell(null);
+                cells[i][j] = new Cell(applet, null, i*64, j*64);
             }
         }
     }
 
     @Override
     void update() {
-
+        for(int i = 0; i < ROWS; i++) {
+            for(int j = 0; j < COLUMNS; j++) {
+                cells[i][j].update();
+            }
+        }
     }
 
     void move(Direction dir) {
@@ -49,5 +53,10 @@ public class Map extends PObject {
     @Override
     void render() {
         applet.image(map, pos.x, pos.y);
+        for(int i = 0; i < ROWS; i++) {
+            for(int j = 0; j < COLUMNS; j++) {
+                cells[i][j].render();
+            }
+        }
     }
 }
