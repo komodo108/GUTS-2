@@ -1,10 +1,9 @@
-import random, os.path
 import pygame
 from pygame.locals import *
-from constants import *
 import assets
 from map import Map
 from score import Score
+from setup import Setup
 
 # see if we can load more than standard BMP
 if not pygame.image.get_extended():
@@ -33,6 +32,8 @@ def main():
         for event in pygame.event.get():
             if event.type == MOUSEBUTTONDOWN and event.button == 1:
                 map.dragging = True
+                mouse_x, mouse_y = event.pos
+                map.startMove(mouse_x, mouse_y)
 
             if event.type == MOUSEMOTION:
                 if map.dragging:

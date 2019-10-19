@@ -1,3 +1,8 @@
+import pygame, os.path
+from pygame.locals import *
+import assets
+from constants import *
+
 # global variables
 class Setup():
     def __init__(self):

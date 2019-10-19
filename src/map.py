@@ -14,10 +14,13 @@ class Map(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(midbottom=SCREEN.midbottom)
         self.center = Points(self.rect.width / 2, self.rect.height / 2)
 
+    def startMove(self, mouseX, mouseY):
+        self.start = Points(mouseX, mouseY)
+
     def mouseMove(self, mouseX, mouseY):
         """Move the map in a Vector2"""
         self.rect.x = mouseX - self.center.x
         self.rect.y = mouseY - self.center.y
-        self.center.x = self.rect.width / 2 - mouseX
-        self.center.y = self.rect.height / 2 - mouseY
+        self.center.x += self.start.x - mouseX
+        self.center.y += self.start.y - mouseY
         print(self.center)
