@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Main extends PApplet {
 
+    private Map map;
+
     @Override
     public void settings() {
         // Set the size
@@ -18,12 +20,17 @@ public class Main extends PApplet {
         // Setup window options
         surface.setTitle("Trashy Game");
         surface.setCursor(CROSS);
+
+        Assets.getInstance().load(this);
+        map = new Map(this);
     }
 
     @Override
     public void draw() {
         // Draw the background
         background(0);
+        map.update();
+        map.render();
     }
 
     @Override
