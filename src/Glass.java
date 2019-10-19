@@ -1,22 +1,11 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Glass extends PObject implements ITrashCleaner {
-    private PImage glass;
+public class Glass extends ATrashCleaner implements ITrashCleaner {
 
-    Plastic(PApplet applet) {
+    Glass(PApplet applet) {
         super(applet);
-        glass = Assets.getInstance().getGlass();
-    }
-
-    @Override
-    void update() {
-
-    }
-
-    @Override
-    void render() {
-        applet.image(glass, pos.x, pos.y); //scaled
+        image = Assets.getInstance().getGlass();
     }
 
     @Override

@@ -18,7 +18,7 @@ public interface ITrashCleaner {
     int getPercentage();
 
     // update the PObject
-    void uodate();
+    void update();
 
     // render the PObject
     void render();
