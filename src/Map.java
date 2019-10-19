@@ -9,36 +9,37 @@ public class Map extends PObject {
 
     private PImage map;
     private final int ROWS = Assets.getInstance().ROWS, COLUMNS = Assets.getInstance().COLUMNS;
-    private Cell[][] cells = new Cell[ROWS][COLUMNS];
+    private Cell[][] cells = new Cell[COLUMNS][ROWS];
 
     Map(PApplet applet) {
         super(applet);
         map = Assets.getInstance().getBackground();
         pos = new PVector(-map.width / 2f, -map.height / 2f);
 
-        for(int i = 0; i < ROWS; i++) {
-            for(int j = 0; j < COLUMNS; j++) {
+        for(int i = 0; i < COLUMNS; i++) {
+            for(int j = 0; j < ROWS; j++) {
                 cells[i][j] = new Cell(applet, null, i*64, j*64);
             }
-        } moveCells(-map.width / 2, -map.height / 2);
+        }
+        moveCells(-map.width / 2, -map.height / 2);
     }
 
     @Override
     void update() {
-        for(int i = 0; i < ROWS; i++) {
-            for(int j = 0; j < COLUMNS; j++) {
+        for(int i = 0; i < COLUMNS; i++) {
+            for(int j = 0; j < ROWS; j++) {
                 cells[i][j].update();
             }
         }
     }
 
     public void mouse(int x, int y) {
-        cells[(ROWS - x)][(COLUMNS - y)].cool();
+        cells[(x+(map.width/2))][(y+(map.height/2))].cool();
     }
 
     void moveCells(int x, int y) {
-        for(int i = 0; i < ROWS; i++) {
-            for(int j = 0; j < COLUMNS; j++) {
+        for(int i = 0; i < COLUMNS; i++) {
+            for(int j = 0; j < ROWS; j++) {
                 cells[i][j].move(x, y);
             }
         }
@@ -72,8 +73,8 @@ public class Map extends PObject {
     @Override
     void render() {
         applet.image(map, pos.x, pos.y);
-        for(int i = 0; i < ROWS; i++) {
-            for(int j = 0; j < COLUMNS; j++) {
+        for(int i = 0; i < COLUMNS; i++) {
+            for(int j = 0; j < ROWS; j++) {
                 cells[i][j].render();
             }
         }
