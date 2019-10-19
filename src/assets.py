@@ -2,6 +2,7 @@ import pygame, os.path
 from pygame.locals import *
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
+images = {}
 
 def load_image(file):
     "loads an image, prepares it for play"

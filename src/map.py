@@ -3,30 +3,21 @@ from pygame.locals import *
 from constants import *
 
 class Map(pygame.sprite.Sprite):
-    speed = 10
-    bounce = 24
-    gun_offset = -11
+    # Attributes
     images = []
+    dragging = False
 
     def __init__(self):
+        """Make a new Map"""
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.image = self.images[0]
         self.rect = self.image.get_rect(midbottom=SCREEN.midbottom)
-        self.reloading = 0
-        self.origtop = self.rect.top
-        self.facing = -1
-    
-    def move(self, direction):
-        if direction:
-            self.facing = direction
-        self.rect.move_ip(direction * self.speed, 0)
-        self.rect = self.rect.clamp(SCREEN)
-        if direction < 0:
-            self.image = self.images[0]
-        elif direction > 0:
-            self.image = self.images[1]
-        self.rect.top = self.origtop - (self.rect.left // self.bounce % 2)
+        self.center = Points(self.rect.width / 2, self.rect.height / 2)
 
-    def gunpos(self):
-        pos = self.facing * self.gun_offset + self.rect.centerx
-        return pos, self.rect.top
+    def mouseMove(self, mouseX, mouseY):
+        """Move the map in a Vector2"""
+        self.rect.x = mouseX - self.center.x
+        self.rect.y = mouseY - self.center.y
+        self.center.x = self.rect.width / 2 - mouseX
+        self.center.y = self.rect.height / 2 - mouseY
+        print(self.center)
