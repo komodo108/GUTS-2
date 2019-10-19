@@ -13,7 +13,7 @@ public class Assets {
 
     private PImage background, plastic, glass, paper;
     private PApplet applet;
-    public final int ROWS = 78, COLUMNS = 51;
+    public final int ROWS = 51, COLUMNS = 78;
 
     public void load(PApplet applet) {
         // Setup assets
