@@ -11,13 +11,18 @@ public class Assets {
         return singleton;
     }
 
-    private PImage background;
+    private PImage background, plastic;
     private PApplet applet;
 
     public void load(PApplet applet) {
         // Setup assets
         this.applet = applet;
         background = applet.loadImage("../data/worldmap.jpg");
+        plastic = applet.loadImage("../data/plastic.jpg");
+    }
+
+    public PImage getPlastic(){
+        return plastic;
     }
 
     public PImage getBackground() {
