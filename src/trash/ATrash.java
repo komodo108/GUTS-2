@@ -5,21 +5,24 @@ import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
 import trash.clean.Glass;
-import trash.clean.Waste;
 import trash.clean.Paper;
 import trash.clean.Plastic;
+import trash.clean.Waste;
 import trash.trash.Trash;
 
-import static game.Constants.*;
+import static game.Constants.TRASH_SIZE;
+import static game.Constants.Type;
 
 public abstract class ATrash extends PObject implements ITrash {
     public PImage image;
+    public Type type;
     public int percentage = 100;
     public double efficiency = 1;
 
-    public ATrash(PApplet applet, int x, int y) {
+    public ATrash(PApplet applet, Type type, int x, int y) {
         super(applet);
         this.pos = new PVector(x, y);
+        this.type = type;
         width = TRASH_SIZE;
         height = TRASH_SIZE;
     }
@@ -31,7 +34,20 @@ public abstract class ATrash extends PObject implements ITrash {
     }
 
     @Override
+    public Type getType() {
+        return type;
+    }
+
+    @Override
     public void update() { /* nothing */ }
+
+    @Override
+    public void workNext(Trash next) {
+        if(next != null) {
+            boolean removed = next.reduce(getType());
+            if(removed) percentage -= 1;
+        }
+    }
 
     @Override
     public void render() {

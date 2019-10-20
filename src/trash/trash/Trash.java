@@ -1,20 +1,23 @@
 package trash.trash;
 
+import game.Assets;
 import processing.core.PApplet;
 import processing.core.PVector;
-import trash.ITrash;
 import trash.ATrash;
+import trash.ITrash;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static game.Constants.*;
+import static game.Constants.TRASH_SIZE;
+import static game.Constants.Type;
+import static game.Constants.Type.OTHER;
 
 public class Trash extends ATrash implements ITrash {
     private List<ATrashParticle> particles = new ArrayList<>();
 
     public Trash(PApplet applet, int x, int y) {
-        super(applet, x, y);
+        super(applet, OTHER, x, y);
         width = TRASH_SIZE;
         height = TRASH_SIZE;
     }
@@ -26,6 +29,32 @@ public class Trash extends ATrash implements ITrash {
         for(ATrashParticle particle : particles) {
             particle.move(x, y);
         }
+    }
+
+    public boolean reduce(Type type) {
+        boolean did = false;
+        List<ATrashParticle> removed = new ArrayList<>();
+        for(ATrashParticle particle : particles) {
+            if(particle.getType().equals(type)) {
+                switch (particle.getType()) {
+                    case WASTE:
+                        if ((int) applet.random(5) == 0) {
+                            removed.add(particle);
+                            Assets.getInstance().setMoney(Assets.getInstance().getMoney() + 10);
+                            did = true;
+                        }
+                        break;
+                    case PAPER: case PLASTIC: case GLASS:
+                        if ((int) applet.random(15) == 0) {
+                            removed.add(particle);
+                            Assets.getInstance().setMoney(Assets.getInstance().getMoney() + 30);
+                            did = true;
+                        }
+                        break;
+                }
+            }
+        } particles.removeAll(removed);
+        return did;
     }
 
     @Override
@@ -46,28 +75,27 @@ public class Trash extends ATrash implements ITrash {
 
     @Override
     public void update() {
-        List<ATrashParticle> add = new ArrayList<>();
-        if((int) applet.random(10) == 0) {
-            ATrashParticle particle = null;
+        ATrashParticle particle = null;
+        if((int) applet.random(10) == 0 && particles.size() < 30) {
             PVector place = new PVector(pos.x + applet.random(TRASH_SIZE), pos.y + applet.random(TRASH_SIZE));
 
-            switch ((int) applet.random(4)) {
-                case 0:
+            switch ((int) applet.random(20)) {
+                case 0: case 1: case 2: case 3:
                     particle = new GlassParticle(applet, (int) place.x, (int) place.y);
                     break;
-                case 1:
+                case 4: case 5: case 6: case 7:
                     particle = new PlasticParticle(applet, (int) place.x, (int) place.y);
                     break;
-                case 2:
+                case 8: case 9: case 10: case 11:
                     particle = new PaperParticle(applet, (int) place.x, (int) place.y);
                     break;
                 default:
                     particle = new WasteParticle(applet, (int) place.x, (int) place.y);
                     break;
-            } add.add(particle);
+            } particles.add(particle);
         } for(ATrashParticle trash : particles) {
             trash.update();
-        } particles.addAll(add);
+        }
     }
 
     @Override

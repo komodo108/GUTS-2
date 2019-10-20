@@ -1,5 +1,6 @@
 package trash;
 
+import game.Constants;
 import trash.trash.Trash;
 
 public interface ITrash {
@@ -26,5 +27,8 @@ public interface ITrash {
 
     // Returns a copy of trash
     ITrash copy();
+
+    // Returns the type
+    Constants.Type getType();
 
 }

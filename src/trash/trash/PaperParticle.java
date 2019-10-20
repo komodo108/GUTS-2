@@ -1,10 +1,11 @@
 package trash.trash;
 
+import game.Constants;
 import processing.core.PApplet;
 
 public class PaperParticle extends ATrashParticle {
     PaperParticle(PApplet applet, int x, int y) {
-        super(applet, x, y);
+        super(applet, Constants.Type.PAPER, x, y);
     }
 
     @Override

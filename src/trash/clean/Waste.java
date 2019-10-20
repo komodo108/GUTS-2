@@ -1,21 +1,16 @@
 package trash.clean;
 
 import game.Assets;
+import game.Constants;
 import processing.core.PApplet;
 import trash.ATrash;
 import trash.ITrash;
-import trash.trash.Trash;
 
 public class Waste extends ATrash implements ITrash {
 
     public Waste(PApplet applet, int x, int y) {
-        super(applet, x, y);
+        super(applet, Constants.Type.WASTE, x, y);
         image = Assets.getInstance().getWaste();
-    }
-
-    @Override
-    public void workNext(Trash next) {
-
     }
 
     @Override

@@ -1,6 +1,7 @@
 package game;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 
 public class Assets {
@@ -15,7 +16,18 @@ public class Assets {
 
     private PImage background, plastic, glass, paper, waste;
     private String[] positions;
+    private PFont font;
     private PApplet applet;
+
+    private int money = 100;
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getMoney() {
+        return money;
+    }
 
     public void load(PApplet applet) {
         // Setup assets
@@ -42,6 +54,14 @@ public class Assets {
 
     public PImage getWaste(){
         return waste;
+    }
+
+    public void setFont(PFont font) {
+        this.font = font;
+    }
+
+    public PFont getFont() {
+        return font;
     }
 
     public String[] getPositions() {

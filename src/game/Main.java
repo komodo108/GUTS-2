@@ -7,6 +7,7 @@ import static game.Constants.*;
 public class Main extends PApplet {
     private Map map;
     private Selector selector;
+    private Money money;
 
     @Override
     public void settings() {
@@ -21,8 +22,11 @@ public class Main extends PApplet {
         surface.setCursor(CROSS);
 
         Assets.getInstance().load(this);
+        Assets.getInstance().setFont(createFont("Consolas", 12, true));
+
         map = new Map(this);
         selector = new Selector(this);
+        money = new Money(this);
     }
 
     @Override
@@ -32,9 +36,11 @@ public class Main extends PApplet {
 
         map.update();
         selector.update();
+        money.update();
 
         map.render();
         selector.render();
+        money.render();
     }
 
     @Override
@@ -67,7 +73,7 @@ public class Main extends PApplet {
 
     @Override
     public void mouseReleased() {
-        if(selector.hasSelected()) map.mouse(selector.mouse());
+        if(selector.hasSelected()) map.mouse(selector.mouse(), selector.getPrice());
         else selector.mouse();
     }
 }

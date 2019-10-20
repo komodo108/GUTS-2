@@ -6,7 +6,7 @@ public final class Constants {
     }
 
     public enum Type {
-        PLASTIC, NORMAL, GLASS, CARDBOARD
+        PLASTIC, WASTE, GLASS, PAPER, OTHER
     }
 
     public static boolean isInRange(float value, float min, float max) {

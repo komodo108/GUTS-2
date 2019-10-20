@@ -4,7 +4,7 @@ import processing.core.PApplet;
 import processing.core.PVector;
 import trash.ITrash;
 
-import static game.Constants.*;
+import static game.Constants.TRASH_SIZE;
 
 public class Cell extends PObject {
 
@@ -34,7 +34,10 @@ public class Cell extends PObject {
     
     @Override
     public void update() {
-        if(trash != null) trash.update();
+        if(trash != null) {
+            trash.update();
+            if(trash.isDead()) trash = null;
+        }
     }
 
     @Override

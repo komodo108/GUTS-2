@@ -61,13 +61,16 @@ public class Map extends PObject {
         }
     }
 
-    public void mouse(ITrash trash) {
+    public void mouse(ITrash trash, int price) {
         for(int i = 0; i < COLUMNS; i++) {
             for(int j = 0; j < ROWS; j++) {
                 Cell cell = cells[i][j];
                 if(isInRange(cell.pos.x, applet.mouseX - TRASH_SIZE, applet.mouseX) && isInRange(cell.pos.y, applet.mouseY - TRASH_SIZE, applet.mouseY)) {
-                    ((PObject) trash).pos = new PVector(cell.pos.x, cell.pos.y);
-                    cell.setTrash(trash);
+                    if(Assets.getInstance().getMoney() >= price && !(cell.getTrash() instanceof Trash)) {
+                        ((PObject) trash).pos = new PVector(cell.pos.x, cell.pos.y);
+                        Assets.getInstance().setMoney(Assets.getInstance().getMoney() - price);
+                        cell.setTrash(trash);
+                    }
                 }
             }
         }
