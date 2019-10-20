@@ -18,4 +18,6 @@ Both pull requests & issues will be **unmonitored**.
 If you want to work more with this game please *fork* the repo.
 
 ### Dependencies
-We only depend upon `processing`, you can download it [here](https://processing.org) & place the libraries from the `Processing` folder into the `libs` directory if the ones supplied don't work.
+We only depend upon `processing` & `processing-sound`, you can download Processing [here](https://processing.org) & place the libraries from the `Processing` & `Processing Sound` (when added from the Processing IDE) to the `libs` folder if the ones supplied don't work.
+
+`music.mp3` from [Bensound.com](http://bensound.com)

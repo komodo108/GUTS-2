@@ -3,6 +3,7 @@ package game;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
+import processing.sound.SoundFile;
 
 public class Assets {
     private static Assets singleton = null;
@@ -18,6 +19,7 @@ public class Assets {
     private String[] positions;
     private PFont font;
     private PApplet applet;
+    private SoundFile sound;
 
     private int money = 100;
 
@@ -32,12 +34,16 @@ public class Assets {
     public void load(PApplet applet) {
         // Setup assets
         this.applet = applet;
+
         background = applet.loadImage("../data/worldmap.png");
         plastic = applet.loadImage("../data/plastic.png");
         glass = applet.loadImage("../data/glass.png");
         paper = applet.loadImage("../data/paper.png");
         waste = applet.loadImage("../data/waste.png");
         positions = applet.loadStrings("../data/coordinates.txt");
+
+        sound = new SoundFile(this.applet, "../data/music.mp3");
+        sound.play();
     }
 
     public PImage getPlastic(){
