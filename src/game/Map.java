@@ -24,27 +24,32 @@ public class Map extends PObject {
             for(int j = 0; j < ROWS; j++) {
                 cells[i][j] = new Cell(applet, null, i * TRASH_SIZE, j * TRASH_SIZE);
             }
-        } moveCells(-width / 2, -height / 2);
+        }
+
+        // Load cities
+        cells[45][29].setTrash(new Trash(applet, (int) cells[45][29].pos.x, (int) cells[45][29].pos.y));
+        moveCells(-width / 2, -height / 2);
     }
 
     @Override
     public void update() {
         for(int i = 0; i < COLUMNS; i++) {
             for(int j = 0; j < ROWS; j++) {
+                cells[i][j].update();
                 ITrash trash = cells[i][j].getTrash();
 
                 if(trash != null && !trash.isDead()) {
                     if(i+1 < COLUMNS) {
-                        if (trash instanceof Trash) trash.workNext((Trash) cells[i + 1][j].getTrash());
+                        if (cells[i + 1][j].getTrash() instanceof Trash) trash.workNext((Trash) cells[i + 1][j].getTrash());
                         trash.helpAround(cells[i + 1][j].getTrash());
                     } if(i-1 >= 0) {
-                        if (trash instanceof Trash) trash.workNext((Trash) cells[i - 1][j].getTrash());
+                        if (cells[i - 1][j].getTrash() instanceof Trash) trash.workNext((Trash) cells[i - 1][j].getTrash());
                         trash.helpAround(cells[i - 1][j].getTrash());
                     } if(j+1 < ROWS) {
-                        if (trash instanceof Trash) trash.workNext((Trash) cells[i][j + 1].getTrash());
+                        if (cells[i][j + 1].getTrash() instanceof Trash) trash.workNext((Trash) cells[i][j + 1].getTrash());
                         trash.helpAround(cells[i][j + 1].getTrash());
                     } if(j-1 >= 0) {
-                        if (trash instanceof Trash) trash.workNext((Trash) cells[i][j - 1].getTrash());
+                        if (cells[i][j - 1].getTrash() instanceof Trash) trash.workNext((Trash) cells[i][j - 1].getTrash());
                         trash.helpAround(cells[i][j - 1].getTrash());
                     }
                 }

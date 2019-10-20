@@ -23,7 +23,7 @@ public class Assets {
         plastic = applet.loadImage("../data/plastic.png");
         glass = applet.loadImage("../data/glass.png");
         paper = applet.loadImage("../data/paper.png");
-        gwaste = applet.loadImage("../data/gwaste.png");
+        gwaste = applet.loadImage("../data/waste.png");
     }
 
     public PImage getPlastic(){

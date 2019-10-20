@@ -31,9 +31,7 @@ public class Selector extends PObject {
     }
 
     @Override
-    public void update() {
-
-    }
+    public void update() { }
 
     public ITrash mouse() {
         if(selected != null) {
@@ -49,7 +47,7 @@ public class Selector extends PObject {
         } return null;
     }
 
-    public boolean hasSelected() {
+    boolean hasSelected() {
         return (selected != null);
     }
 
