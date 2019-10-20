@@ -6,7 +6,7 @@ import static game.Constants.HEIGHT;
 import static game.Constants.WIDTH;
 
 public class Introduction extends PObject {
-    private boolean done = false;
+    private int slide = 0;
 
     public Introduction(PApplet applet) {
         super(applet);
@@ -19,22 +19,24 @@ public class Introduction extends PObject {
 
     @Override
     public void render() {
-        applet.fill(255);
-        applet.noStroke();
-        applet.rect(0, 0, width, height);
-        applet.fill(0);
-        applet.textFont(Assets.getInstance().getFont(), 32);
-        applet.text("Welcome!", width / 2f, height / 2f);
-        applet.textFont(Assets.getInstance().getFont(), 16);
-        applet.text("Press space to continue!", width / 2f, 2 * height / 3f);
-        applet.stroke(0);
+        switch (slide) {
+            case 0:
+                applet.image(Assets.getInstance().getSlide1(), 0, 0);
+                break;
+            case 1:
+                applet.image(Assets.getInstance().getSlide2(), 0, 0);
+                break;
+            case 2:
+                applet.image(Assets.getInstance().getSlide3(), 0, 0);
+                break;
+        }
     }
 
     public void key() {
-        done = true;
+        slide++;
     }
 
     public boolean isDone() {
-        return done;
+        return slide >= 3;
     }
 }
