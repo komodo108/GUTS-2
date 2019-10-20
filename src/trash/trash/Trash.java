@@ -12,6 +12,7 @@ import java.util.List;
 import static game.Constants.TRASH_SIZE;
 import static game.Constants.Type;
 import static game.Constants.Type.OTHER;
+import static game.Constants.Type.WASTE;
 
 public class Trash extends ATrash implements ITrash {
     private List<ATrashParticle> particles = new ArrayList<>();
@@ -35,7 +36,7 @@ public class Trash extends ATrash implements ITrash {
         boolean did = false;
         List<ATrashParticle> removed = new ArrayList<>();
         for(ATrashParticle particle : particles) {
-            if(particle.getType().equals(type)) {
+            if(particle.getType().equals(type) || (int) applet.random(15) == 0) {
                 switch (particle.getType()) {
                     case WASTE:
                         if ((int) applet.random(5) == 0) {
@@ -93,9 +94,13 @@ public class Trash extends ATrash implements ITrash {
                     particle = new WasteParticle(applet, (int) place.x, (int) place.y);
                     break;
             } particles.add(particle);
-        } for(ATrashParticle trash : particles) {
-            trash.update();
         }
+
+        double money = 0;
+        for(ATrashParticle trash : particles) {
+            if((int) applet.random(15) == 0) money += trash.getType().equals(WASTE) ? 0.1 : 0.3;
+            trash.update();
+        } Assets.getInstance().setMoney(Assets.getInstance().getMoney() - (int) money);
     }
 
     @Override
