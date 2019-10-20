@@ -96,3 +96,6 @@ hs_err_pid*
 
 # MacOS is dumb
 .DS_Store
+!/libs/javamp3-1.0.4.jar
+!/libs/jsyn-20171016.jar
+!/libs/sound.jar
