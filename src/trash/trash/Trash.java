@@ -41,14 +41,14 @@ public class Trash extends ATrash implements ITrash {
                     case WASTE:
                         if ((int) applet.random(5) == 0) {
                             removed.add(particle);
-                            Assets.getInstance().setMoney(Assets.getInstance().getMoney() + 10);
+                            Assets.getInstance().addMoney(10);
                             did = true;
                         }
                         break;
                     case PAPER: case PLASTIC: case GLASS:
                         if ((int) applet.random(15) == 0) {
                             removed.add(particle);
-                            Assets.getInstance().setMoney(Assets.getInstance().getMoney() + 30);
+                            Assets.getInstance().addMoney(30);
                             did = true;
                         }
                         break;
@@ -100,7 +100,7 @@ public class Trash extends ATrash implements ITrash {
         for(ATrashParticle trash : particles) {
             if((int) applet.random(15) == 0) money += trash.getType().equals(WASTE) ? 0.1 : 0.3;
             trash.update();
-        } Assets.getInstance().setMoney(Assets.getInstance().getMoney() - (int) money);
+        } Assets.getInstance().addMoney((int) -money);
     }
 
     @Override

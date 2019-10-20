@@ -23,8 +23,8 @@ public class Assets {
 
     private int money = 100;
 
-    public void setMoney(int money) {
-        this.money = money;
+    public void addMoney(int money) {
+        this.money += money;
     }
 
     public int getMoney() {

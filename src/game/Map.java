@@ -68,7 +68,7 @@ public class Map extends PObject {
                 if(isInRange(cell.pos.x, applet.mouseX - TRASH_SIZE, applet.mouseX) && isInRange(cell.pos.y, applet.mouseY - TRASH_SIZE, applet.mouseY)) {
                     if(Assets.getInstance().getMoney() >= price && !(cell.getTrash() instanceof Trash)) {
                         ((PObject) trash).pos = new PVector(cell.pos.x, cell.pos.y);
-                        Assets.getInstance().setMoney(Assets.getInstance().getMoney() - price);
+                        Assets.getInstance().addMoney(-price);
                         cell.setTrash(trash);
                     }
                 }
