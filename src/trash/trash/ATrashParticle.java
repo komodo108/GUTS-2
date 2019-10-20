@@ -1,15 +1,15 @@
 package trash.trash;
 
+import game.Constants;
 import game.PObject;
 import processing.core.PApplet;
 import processing.core.PVector;
-import trash.clean.ITrashCleaner;
 
-public abstract class ATrash extends PObject {
-    ITrashCleaner.Type type;
+public abstract class ATrashParticle extends PObject {
+    Constants.Type type;
     PVector colour;
 
-    ATrash(PApplet applet, ITrashCleaner.Type type) {
+    ATrashParticle(PApplet applet, Constants.Type type) {
         super(applet);
         this.type = type;
     }

@@ -1,16 +1,8 @@
-package trash.clean;
+package trash;
 
 import trash.trash.Trash;
 
-public interface ITrashCleaner {
-
-    enum Type {
-        PLASTIC,
-        NORMAL,
-        GLASS,
-        CARDBOARD
-    }
-
+public interface ITrash {
     void move(int x, int y);
 
     // Works on destroying some of the trash
@@ -18,15 +10,21 @@ public interface ITrashCleaner {
 
     // Helps units around it
     // e.g. glass cleaner is good at helping cardboard
-    void helpAround(ITrashCleaner cleaner);
+    void helpAround(ITrash cleaner);
 
     // Returns how damaged this unit is, destroyed when 0
     int getPercentage();
+
+    // Returns if we are dead
+    boolean isDead();
 
     // update the game.PObject
     void update();
 
     // render the game.PObject
     void render();
+
+    // Returns a copy of trash
+    ITrash copy();
 
 }

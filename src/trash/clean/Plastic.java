@@ -2,9 +2,11 @@ package trash.clean;
 
 import game.Assets;
 import processing.core.PApplet;
+import trash.ATrash;
+import trash.ITrash;
 import trash.trash.Trash;
 
-public class Plastic extends ATrashCleaner implements ITrashCleaner {
+public class Plastic extends ATrash implements ITrash {
 
     public Plastic(PApplet applet, int x, int y) {
         super(applet, x, y);
@@ -17,7 +19,7 @@ public class Plastic extends ATrashCleaner implements ITrashCleaner {
     }
 
     @Override
-    public void helpAround(ITrashCleaner cleaner) {
+    public void helpAround(ITrash cleaner) {
         if (cleaner instanceof Plastic) {
             efficiency *= 2;
         }
@@ -27,7 +29,7 @@ public class Plastic extends ATrashCleaner implements ITrashCleaner {
         else if (cleaner instanceof Paper) {
             efficiency *= 1.2;
         }
-        else if (cleaner instanceof Gwaste) {
+        else if (cleaner instanceof Waste) {
             efficiency *= 0.2;
         }
     }

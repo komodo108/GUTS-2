@@ -2,23 +2,27 @@ package game;
 
 import processing.core.PApplet;
 import processing.core.PVector;
-import trash.clean.ITrashCleaner;
+import trash.ITrash;
+
+import static game.Constants.*;
 
 public class Cell extends PObject {
 
-    private ITrashCleaner trash;
+    private ITrash trash;
 
-    public Cell(PApplet applet, ITrashCleaner trash, int x, int y) {
+    public Cell(PApplet applet, ITrash trash, int x, int y) {
         super(applet);
         this.trash = trash;
         this.pos = new PVector(x, y);
+        this.width = TRASH_SIZE;
+        this.height = TRASH_SIZE;
     }
 
-    public void setTrash(ITrashCleaner trash) {
+    public void setTrash(ITrash trash) {
         this.trash = trash;
     }
 
-    public ITrashCleaner getTrash() {
+    public ITrash getTrash() {
         return trash;
     }
 
@@ -36,7 +40,7 @@ public class Cell extends PObject {
     @Override
     public void render() {
         applet.fill(0, 0);
-        applet.rect(pos.x, pos.y, 64, 64);
+        //applet.rect(pos.x, pos.y, 64, 64);
         if(trash != null) trash.render();
     }
 }

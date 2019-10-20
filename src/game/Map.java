@@ -3,50 +3,68 @@ package game;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
+import trash.ITrash;
 import trash.clean.Plastic;
+import trash.trash.Trash;
+
+import static game.Constants.*;
 
 public class Map extends PObject {
-    enum Direction {
-        UP, DOWN, LEFT, RIGHT;
-    }
-
     private PImage map;
-    private final int ROWS = Assets.getInstance().ROWS, COLUMNS = Assets.getInstance().COLUMNS;
     private Cell[][] cells = new Cell[COLUMNS][ROWS];
 
     Map(PApplet applet) {
         super(applet);
         map = Assets.getInstance().getBackground();
         pos = new PVector(-map.width / 2f, -map.height / 2f);
+        width = map.width;
+        height = map.height;
 
         for(int i = 0; i < COLUMNS; i++) {
             for(int j = 0; j < ROWS; j++) {
-                cells[i][j] = new Cell(applet, null, i*64, j*64);
+                cells[i][j] = new Cell(applet, null, i * TRASH_SIZE, j * TRASH_SIZE);
             }
-        } moveCells(-map.width / 2, -map.height / 2);
+        } moveCells(-width / 2, -height / 2);
     }
 
     @Override
     public void update() {
         for(int i = 0; i < COLUMNS; i++) {
             for(int j = 0; j < ROWS; j++) {
-                cells[i][j].update();
-            }
-        }
-    }
+                ITrash trash = cells[i][j].getTrash();
 
-    public void mouse(int x, int y) {
-        for(int i = 0; i < COLUMNS; i++) {
-            for(int j = 0; j < ROWS; j++) {
-                if(cells[i][j].pos.x >= x - 64 && cells[i][j].pos.x < x && cells[i][j].pos.y >= y - 64 && cells[i][j].pos.y < y) {
-                    cells[i][j].setTrash(new Plastic(applet, (int) cells[i][j].pos.x, (int) cells[i][j].pos.y));
-                    System.out.println("You clicked on cell [" + i + "][" + j + "]!");
+                if(trash != null && !trash.isDead()) {
+                    if(i+1 < COLUMNS) {
+                        if (trash instanceof Trash) trash.workNext((Trash) cells[i + 1][j].getTrash());
+                        trash.helpAround(cells[i + 1][j].getTrash());
+                    } if(i-1 >= 0) {
+                        if (trash instanceof Trash) trash.workNext((Trash) cells[i - 1][j].getTrash());
+                        trash.helpAround(cells[i - 1][j].getTrash());
+                    } if(j+1 < ROWS) {
+                        if (trash instanceof Trash) trash.workNext((Trash) cells[i][j + 1].getTrash());
+                        trash.helpAround(cells[i][j + 1].getTrash());
+                    } if(j-1 >= 0) {
+                        if (trash instanceof Trash) trash.workNext((Trash) cells[i][j - 1].getTrash());
+                        trash.helpAround(cells[i][j - 1].getTrash());
+                    }
                 }
             }
         }
     }
 
-    void moveCells(int x, int y) {
+    public void mouse(ITrash trash) {
+        for(int i = 0; i < COLUMNS; i++) {
+            for(int j = 0; j < ROWS; j++) {
+                Cell cell = cells[i][j];
+                if(isInRange(cell.pos.x, applet.mouseX - TRASH_SIZE, applet.mouseX) && isInRange(cell.pos.y, applet.mouseY - TRASH_SIZE, applet.mouseY)) {
+                    ((PObject) trash).pos = new PVector(cell.pos.x, cell.pos.y);
+                    cell.setTrash(trash);
+                }
+            }
+        }
+    }
+
+    private void moveCells(int x, int y) {
         for(int i = 0; i < COLUMNS; i++) {
             for(int j = 0; j < ROWS; j++) {
                 cells[i][j].move(x, y);
@@ -57,22 +75,22 @@ public class Map extends PObject {
     void move(Direction dir) {
         switch (dir) {
             case UP:
-                if(pos.y < -50) {
+                if(pos.y < -MAP_OFFSET) {
                 	pos.y += 40;
                     moveCells(0, 40);
                 } break;
             case DOWN:
-                if(pos.y > -map.height + 650) {
+                if(pos.y > -map.height + HEIGHT + MAP_OFFSET) {
                 	pos.y -= 40;
                 	moveCells(0, -40);
                 } break;
             case LEFT:
-                if(pos.x < -50) {
+                if(pos.x < -MAP_OFFSET) {
                 	pos.x += 40;
                 	moveCells(40, 0);
                 } break;
             case RIGHT:
-                if(pos.x > -map.width + 850) {
+                if(pos.x > -map.width + WIDTH + MAP_OFFSET) {
                 	pos.x -= 40;
                 	moveCells(-40, 0);
                 } break;

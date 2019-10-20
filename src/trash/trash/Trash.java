@@ -1,28 +1,54 @@
 package trash.trash;
 
-import game.PObject;
 import processing.core.PApplet;
+import trash.ITrash;
+import trash.ATrash;
 
 import java.util.List;
 
-public class Trash extends PObject {
+import static game.Constants.*;
 
-    private List<ATrash> particles;
+public class Trash extends ATrash implements ITrash {
+    private List<ATrashParticle> particles;
 
-    Trash(PApplet applet) {
-        super(applet);
+    Trash(PApplet applet, int x, int y) {
+        super(applet, x, y);
+        width = TRASH_SIZE;
+        height = TRASH_SIZE;
+    }
+
+    @Override
+    public void move(int x, int y) {
+        pos.x += x;
+        pos.y += y;
+    }
+
+    @Override
+    public void workNext(Trash next) { /* nothing */ }
+
+    @Override
+    public void helpAround(ITrash cleaner) { /* nothing */ }
+
+    @Override
+    public int getPercentage() {
+        return -1;
+    }
+
+    @Override
+    public boolean isDead() {
+        return false;
     }
 
     @Override
     public void update() {
-        for(ATrash trash : particles) {
+        for(ATrashParticle trash : particles) {
             trash.update();
         }
     }
 
     @Override
     public void render() {
-        for(ATrash trash : particles) {
+        for(ATrashParticle trash : particles) {
             trash.render();
         }
     }
