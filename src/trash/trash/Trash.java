@@ -53,16 +53,16 @@ public class Trash extends ATrash implements ITrash {
             if(particle.getType().equals(type) || (int) applet.random(15) == 0) {
                 switch (particle.getType()) {
                     case WASTE:
-                        if ((int) applet.random(5) == 0) {
+                        if ((int) applet.random(25) == 0) {
                             removed.add(particle);
-                            Assets.getInstance().addMoney(10);
+                            Assets.getInstance().addMoney(1);
                             did = true;
                         }
                         break;
                     case PAPER: case PLASTIC: case GLASS:
-                        if ((int) applet.random(15) == 0) {
+                        if ((int) applet.random(90) == 0) {
                             removed.add(particle);
-                            Assets.getInstance().addMoney(30);
+                            Assets.getInstance().addMoney(3);
                             did = true;
                         }
                         break;
@@ -113,7 +113,7 @@ public class Trash extends ATrash implements ITrash {
         if((int) applet.random((int) (20 / Assets.getInstance().getMultiplyer())) == 0) {
             double money = 0;
             for (ATrashParticle trash : particles) {
-                if ((int) applet.random(15) == 0) money += trash.getType().equals(WASTE) ? 0.1 : 0.3;
+                if ((int) applet.random(10) == 0) money += trash.getType().equals(WASTE) ? 0.15 : 0.4;
                 trash.update();
             } Assets.getInstance().addMoney((int) -money);
         }

@@ -17,9 +17,16 @@ public class Introduction extends PObject {
     @Override
     public void update() { }
 
+    public void gameOver() {
+        slide = -1;
+    }
+
     @Override
     public void render() {
         switch (slide) {
+            case -1:
+                applet.image(Assets.getInstance().getGameOver(), 0, 0);
+                break;
             case 0:
                 applet.image(Assets.getInstance().getSlide1(), 0, 0);
                 break;
@@ -33,10 +40,14 @@ public class Introduction extends PObject {
     }
 
     public void key() {
-        slide++;
+        if(slide >= 0) slide++;
     }
 
     public boolean isDone() {
         return slide >= 3;
+    }
+
+    public boolean isGameOver() {
+        return slide == -1;
     }
 }

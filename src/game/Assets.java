@@ -15,7 +15,7 @@ public class Assets {
         return singleton;
     }
 
-    private PImage background, plastic, glass, paper, waste, upgrade, slide1, slide2, slide3;
+    private PImage background, plastic, glass, paper, waste, upgrade, slide1, slide2, slide3, gameover;
     private String[] positions;
     private PFont font;
     private PApplet applet;
@@ -84,6 +84,7 @@ public class Assets {
         slide1 = applet.loadImage("../data/slide1.png");
         slide2 = applet.loadImage("../data/slide2.png");
         slide3 = applet.loadImage("../data/slide3.png");
+        gameover = applet.loadImage("../data/gameover.png");
         positions = applet.loadStrings("../data/coordinates.txt");
 
         sound = new SoundFile(this.applet, "../data/music.mp3");
@@ -96,6 +97,10 @@ public class Assets {
 
     public PImage getGlass(){
         return glass;
+    }
+
+    public PImage getGameOver() {
+        return gameover;
     }
 
     public PImage getPaper(){

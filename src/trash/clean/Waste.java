@@ -17,14 +17,11 @@ public class Waste extends ATrash implements ITrash {
     public void helpAround(ITrash cleaner) {
         if (cleaner instanceof Waste) {
             efficiency *= 2;
-        }
-        else if (cleaner instanceof Glass) {
+        } else if (cleaner instanceof Glass) {
             efficiency *=.5;
-        }
-        else if (cleaner instanceof Paper) {
+        } else if (cleaner instanceof Paper) {
             efficiency *= 1.2;
-        }
-        else if (cleaner instanceof Plastic) {
+        } else if (cleaner instanceof Plastic) {
             efficiency *= 0.2;
         }
     }

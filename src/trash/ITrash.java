@@ -7,6 +7,9 @@ public interface ITrash {
     void move(int x, int y);
     void setPos(int x, int y);
 
+    // get upgraded!
+    void upgrade();
+
     // Works on destroying some of the trash
     void workNext(Trash next);
 
@@ -31,5 +34,7 @@ public interface ITrash {
 
     // Returns the type
     Constants.Type getType();
+
+    double getEffiency();
 
 }

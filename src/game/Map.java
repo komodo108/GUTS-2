@@ -47,7 +47,7 @@ public class Map extends PObject {
                 cells[i][j].update();
                 ITrash trash = cells[i][j].getTrash();
 
-                if(trash != null && !trash.isDead()) {
+                if(trash != null && (int) applet.random((int) trash.getEffiency() * 10) == 0 && !trash.isDead()) {
                     if(i+1 < COLUMNS) {
                         if (cells[i + 1][j].getTrash() instanceof Trash) trash.workNext((Trash) cells[i + 1][j].getTrash());
                         trash.helpAround(cells[i + 1][j].getTrash());
@@ -70,7 +70,7 @@ public class Map extends PObject {
             Holder held = to_add.get(index);
             Cell cell = cells[held.getI1()][held.getI2()];
             cell.setTrash(new Trash(applet, (int) cell.pos.x, (int) cell.pos.y));
-            Assets.getInstance().setInfo("CITY SPAWNING: [" + held.getI1() + ", " + held.getI2() + "]");
+            Assets.getInstance().setInfo("CITY SPAWNED: [" + held.getI1() + ", " + held.getI2() + "]");
         }
     }
 

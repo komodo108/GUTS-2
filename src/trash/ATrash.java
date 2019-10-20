@@ -15,6 +15,7 @@ public abstract class ATrash extends PObject implements ITrash {
     public Type type;
     public int percentage = 100;
     public double efficiency = 1;
+    public boolean upgraded = false;
 
     public ATrash(PApplet applet, Type type, int x, int y) {
         super(applet);
@@ -34,6 +35,15 @@ public abstract class ATrash extends PObject implements ITrash {
     public void setPos(int x, int y) {
         pos.x = x;
         pos.y = y;
+    }
+
+    @Override
+    public void upgrade() {
+        if(!upgraded) {
+            this.percentage = 200;
+            efficiency *= 1.5;
+            upgraded = true;
+        }
     }
 
     @Override
@@ -60,6 +70,11 @@ public abstract class ATrash extends PObject implements ITrash {
     @Override
     public int getPercentage() {
         return percentage;
+    }
+
+    @Override
+    public double getEffiency() {
+        return efficiency;
     }
 
     @Override

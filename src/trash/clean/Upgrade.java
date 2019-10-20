@@ -19,5 +19,6 @@ public class Upgrade extends ATrash {
     @Override
     public void helpAround(ITrash cleaner) {
         // TODO: Increase effiency
+        if(cleaner != null) cleaner.upgrade();
     }
 }

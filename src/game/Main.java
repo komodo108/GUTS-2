@@ -27,7 +27,7 @@ public class Main extends PApplet {
         Assets.getInstance().setFont(createFont("Trattatello", 12, true));
 
         intro = new Introduction(this);
-        Assets.getInstance().setMoney(2000);
+        Assets.getInstance().setMoney(200);
     }
 
     public void startGame() {
@@ -50,15 +50,24 @@ public class Main extends PApplet {
                 intro = null;
             }
         } else {
-            map.update();
-            selector.update();
-            money.update();
-            info.update();
+            if(Assets.getInstance().getMoney() > 0) {
+                if(Assets.getInstance().getMoney() > 2000) {
+                    Assets.getInstance().setMoney(Assets.getInstance().getMoney() / 2);
+                    Assets.getInstance().nextWave();
+                } map.update();
+                selector.update();
+                money.update();
+                info.update();
 
-            map.render();
-            selector.render();
-            money.render();
-            info.render();
+                map.render();
+                selector.render();
+                money.render();
+                info.render();
+            } else {
+                // Game over
+                intro = new Introduction(this);
+                intro.gameOver();
+            }
         }
     }
 
@@ -73,6 +82,7 @@ public class Main extends PApplet {
                     selector = null;
                     money = null;
                     intro = new Introduction(this);
+                    Assets.getInstance().setMoney(200);
                     break;
 
                 case '1':
@@ -105,6 +115,12 @@ public class Main extends PApplet {
         } else {
             if(key == ' ') {
                 intro.key();
+            } else if(key == 'r' && intro.isGameOver()) {
+                map = null;
+                selector = null;
+                money = null;
+                intro = new Introduction(this);
+                Assets.getInstance().setMoney(200);
             }
         }
     }
