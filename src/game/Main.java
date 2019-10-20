@@ -24,7 +24,7 @@ public class Main extends PApplet {
         surface.setCursor(CROSS);
 
         Assets.getInstance().load(this);
-        Assets.getInstance().setFont(createFont("Consolas", 12, true));
+        Assets.getInstance().setFont(createFont("Trattatello", 12, true));
 
         intro = new Introduction(this);
         Assets.getInstance().setMoney(2000);
