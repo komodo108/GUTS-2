@@ -84,27 +84,48 @@ public class Map extends PObject {
         }
     }
 
+    private void setPosCells(int x, int y) {
+        for(int i = 0; i < COLUMNS; i++) {
+            for(int j = 0; j < ROWS; j++) {
+                cells[i][j].setPos(i * TRASH_SIZE, j * TRASH_SIZE);
+            }
+        }
+    }
+
+    void move(int x, int y) {
+        pos.x = -width / 2f;
+        pos.y = -height / 2f;
+        setPosCells(0, 0);
+        moveCells(-width / 2, -height / 2);
+
+        for(int i = 0; i < Math.abs(x); i++) {
+            move(x > 0 ? Direction.LEFT : Direction.RIGHT);
+        } for(int i = 0; i < Math.abs(y); i++) {
+            move(y > 0 ? Direction.UP : Direction.DOWN);
+        }
+    }
+
     void move(Direction dir) {
         switch (dir) {
             case UP:
                 if(pos.y < -MAP_OFFSET) {
-                	pos.y += 40;
-                    moveCells(0, 40);
+                	pos.y += STEP_SIZE;
+                    moveCells(0, STEP_SIZE);
                 } break;
             case DOWN:
                 if(pos.y > -map.height + HEIGHT + MAP_OFFSET) {
-                	pos.y -= 40;
-                	moveCells(0, -40);
+                	pos.y -= STEP_SIZE;
+                	moveCells(0, -STEP_SIZE);
                 } break;
             case LEFT:
                 if(pos.x < -MAP_OFFSET) {
-                	pos.x += 40;
-                	moveCells(40, 0);
+                	pos.x += STEP_SIZE;
+                	moveCells(STEP_SIZE, 0);
                 } break;
             case RIGHT:
                 if(pos.x > -map.width + WIDTH + MAP_OFFSET) {
-                	pos.x -= 40;
-                	moveCells(-40, 0);
+                	pos.x -= STEP_SIZE;
+                	moveCells(-STEP_SIZE, 0);
                 } break;
         }
     }

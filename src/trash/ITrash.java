@@ -5,6 +5,7 @@ import trash.trash.Trash;
 
 public interface ITrash {
     void move(int x, int y);
+    void setPos(int x, int y);
 
     // Works on destroying some of the trash
     void workNext(Trash next);

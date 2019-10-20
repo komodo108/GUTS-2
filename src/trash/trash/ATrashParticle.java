@@ -25,6 +25,11 @@ public abstract class ATrashParticle extends PObject {
         pos.y += y;
     }
 
+    void setPos(int x, int y) {
+        pos.x = x;
+        pos.y = y;
+    }
+
     @Override
     public void update() { }
 }

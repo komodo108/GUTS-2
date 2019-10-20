@@ -4,10 +4,7 @@ import game.PObject;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
-import trash.clean.Glass;
-import trash.clean.Paper;
-import trash.clean.Plastic;
-import trash.clean.Waste;
+import trash.clean.*;
 import trash.trash.Trash;
 
 import static game.Constants.TRASH_SIZE;
@@ -31,6 +28,12 @@ public abstract class ATrash extends PObject implements ITrash {
     public void move(int x, int y) {
         pos.x += x;
         pos.y += y;
+    }
+
+    @Override
+    public void setPos(int x, int y) {
+        pos.x = x;
+        pos.y = y;
     }
 
     @Override
@@ -77,6 +80,8 @@ public abstract class ATrash extends PObject implements ITrash {
                 trash = new Paper(applet, (int) object.pos.x, (int) object.pos.y);
             } else if (this instanceof Plastic) {
                 trash = new Plastic(applet, (int) object.pos.x, (int) object.pos.y);
+            } else if (this instanceof Upgrade) {
+                trash = new Upgrade(applet, (int) object.pos.x, (int) object.pos.y);
             }
         } return trash;
     }

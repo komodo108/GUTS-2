@@ -4,10 +4,7 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PVector;
 import trash.ITrash;
-import trash.clean.Glass;
-import trash.clean.Paper;
-import trash.clean.Plastic;
-import trash.clean.Waste;
+import trash.clean.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +36,7 @@ public class Selector extends PObject {
         prices.add(50);
         items.add(new Waste(applet, (int) ((WIDTH / 2f) + TRASH_SIZE * (1 / 2f)), HEIGHT - TRASH_SIZE));
         prices.add(20);
-
+        items.add(new Upgrade(applet, (int) ((WIDTH / 2f) + TRASH_SIZE * (3 / 2f)), HEIGHT - TRASH_SIZE));
         prices.add(100);
     }
 

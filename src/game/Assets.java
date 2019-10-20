@@ -15,7 +15,7 @@ public class Assets {
         return singleton;
     }
 
-    private PImage background, plastic, glass, paper, waste;
+    private PImage background, plastic, glass, paper, waste, upgrade ;
     private String[] positions;
     private PFont font;
     private PApplet applet;
@@ -40,6 +40,8 @@ public class Assets {
         glass = applet.loadImage("../data/glass.png");
         paper = applet.loadImage("../data/paper.png");
         waste = applet.loadImage("../data/waste.png");
+        upgrade = applet.loadImage("../data/upgrade.png");
+
         positions = applet.loadStrings("../data/coordinates.txt");
 
         sound = new SoundFile(this.applet, "../data/music.mp3");
@@ -60,6 +62,10 @@ public class Assets {
 
     public PImage getWaste(){
         return waste;
+    }
+
+    public PImage getUpgrade() {
+        return upgrade;
     }
 
     public void setFont(PFont font) {

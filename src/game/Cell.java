@@ -31,6 +31,12 @@ public class Cell extends PObject {
         pos.y += y;
         if(trash != null) trash.move(x, y);
     }
+
+    public void setPos(int x, int y) {
+        pos.x = x;
+        pos.y = y;
+        if(trash != null) trash.setPos(x, y);
+    }
     
     @Override
     public void update() {

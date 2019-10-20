@@ -49,6 +49,14 @@ public class Main extends PApplet {
             // R to rest the game
             case 'r':
                 // Reset
+            case '1':
+                map.move(12, 26); //Spain
+                break;
+            case '2':
+                map.move(66, 24); //US
+                break;
+            // TODO: Add more
+
             case CODED:
                 switch (keyCode) {
                     case UP:

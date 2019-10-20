@@ -32,6 +32,16 @@ public class Trash extends ATrash implements ITrash {
         }
     }
 
+    @Override
+    public void setPos(int x, int y) {
+        pos.x = x;
+        pos.y = y;
+        for(ATrashParticle particle : particles) {
+            PVector place = new PVector(pos.x + applet.random(TRASH_SIZE), pos.y + applet.random(TRASH_SIZE));
+            particle.setPos((int) place.x, (int) place.y);
+        }
+    }
+
     public boolean reduce(Type type) {
         boolean did = false;
         List<ATrashParticle> removed = new ArrayList<>();
