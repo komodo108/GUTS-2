@@ -33,6 +33,7 @@ public class Map extends PObject {
             int i2 = Integer.parseInt(words[2]);
             cells[i1][i2].setTrash(new Trash(applet, (int) cells[i1][i2].pos.x, (int) cells[i1][i2].pos.y));
         } moveCells(-width / 2, -height / 2);
+        move(12, 26); //Look over EU
     }
 
     @Override

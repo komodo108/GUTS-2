@@ -21,11 +21,13 @@ public class Assets {
     private PApplet applet;
     private SoundFile sound;
 
-    private int money = 100;
+    private int money = 2000;
 
     public void addMoney(int money) {
         this.money += money;
     }
+
+    public void setMoney(int money) { this.money = money; }
 
     public int getMoney() {
         return money;

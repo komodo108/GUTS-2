@@ -49,11 +49,20 @@ public class Main extends PApplet {
             // R to rest the game
             case 'r':
                 // Reset
+                map = new Map(this);
+                selector = new Selector(this);
+                money = new Money(this);
+                Assets.getInstance().setMoney(2000);
+                break;
+
             case '1':
                 map.move(12, 26); //Spain
                 break;
             case '2':
                 map.move(66, 24); //US
+                break;
+            case '3':
+                map.move(-2, -14);
                 break;
             // TODO: Add more
 

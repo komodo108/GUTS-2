@@ -14,7 +14,6 @@ public class Money extends PObject {
         super(applet);
         this.font = Assets.getInstance().getFont();
         pos = new PVector(WIDTH - 10, this.font.getSize() + 10);
-        Assets.getInstance().addMoney(100);
     }
 
     @Override
