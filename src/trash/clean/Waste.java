@@ -10,7 +10,7 @@ public class Waste extends ATrash implements ITrash {
 
     public Waste(PApplet applet, int x, int y) {
         super(applet, x, y);
-        image = Assets.getInstance().getGwaste();
+        image = Assets.getInstance().getWaste();
     }
 
     @Override

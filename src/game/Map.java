@@ -4,7 +4,6 @@ import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
 import trash.ITrash;
-import trash.clean.Plastic;
 import trash.trash.Trash;
 
 import static game.Constants.*;
@@ -27,8 +26,13 @@ public class Map extends PObject {
         }
 
         // Load cities
-        cells[45][29].setTrash(new Trash(applet, (int) cells[45][29].pos.x, (int) cells[45][29].pos.y));
-        moveCells(-width / 2, -height / 2);
+        String[] lines = Assets.getInstance().getPositions();
+        for(String position : lines) {
+            String[] words = position.split(" ");
+            int i1 = Integer.parseInt(words[1]);
+            int i2 = Integer.parseInt(words[2]);
+            cells[i1][i2].setTrash(new Trash(applet, (int) cells[i1][i2].pos.x, (int) cells[i1][i2].pos.y));
+        } moveCells(-width / 2, -height / 2);
     }
 
     @Override

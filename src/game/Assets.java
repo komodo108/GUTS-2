@@ -13,7 +13,8 @@ public class Assets {
         return singleton;
     }
 
-    private PImage background, plastic, glass, paper, gwaste;
+    private PImage background, plastic, glass, paper, waste;
+    private String[] positions;
     private PApplet applet;
 
     public void load(PApplet applet) {
@@ -23,7 +24,8 @@ public class Assets {
         plastic = applet.loadImage("../data/plastic.png");
         glass = applet.loadImage("../data/glass.png");
         paper = applet.loadImage("../data/paper.png");
-        gwaste = applet.loadImage("../data/waste.png");
+        waste = applet.loadImage("../data/waste.png");
+        positions = applet.loadStrings("../data/coordinates.txt");
     }
 
     public PImage getPlastic(){
@@ -38,8 +40,12 @@ public class Assets {
         return paper;
     }
 
-    public PImage getGwaste(){
-        return gwaste;
+    public PImage getWaste(){
+        return waste;
+    }
+
+    public String[] getPositions() {
+        return positions;
     }
 
     public PImage getBackground() {
