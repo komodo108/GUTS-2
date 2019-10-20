@@ -6,11 +6,15 @@ import processing.core.PVector;
 import trash.ITrash;
 import trash.trash.Trash;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static game.Constants.*;
 
 public class Map extends PObject {
     private PImage map;
     private Cell[][] cells = new Cell[COLUMNS][ROWS];
+    private List<Holder> to_add = new ArrayList<>();
 
     Map(PApplet applet) {
         super(applet);
@@ -31,7 +35,7 @@ public class Map extends PObject {
             String[] words = position.split(" ");
             int i1 = Integer.parseInt(words[1]);
             int i2 = Integer.parseInt(words[2]);
-            cells[i1][i2].setTrash(new Trash(applet, (int) cells[i1][i2].pos.x, (int) cells[i1][i2].pos.y));
+            to_add.add(new Holder(i1, i2));
         } moveCells(-width / 2, -height / 2);
         move(12, 26); //Look over EU
     }
@@ -59,6 +63,14 @@ public class Map extends PObject {
                     }
                 }
             }
+        }
+
+        if((int) applet.random((int) (500 / Assets.getInstance().getMultiplyer())) == 0) {
+            int index = (int) applet.random(to_add.size());
+            Holder held = to_add.get(index);
+            Cell cell = cells[held.getI1()][held.getI2()];
+            cell.setTrash(new Trash(applet, (int) cell.pos.x, (int) cell.pos.y));
+            Assets.getInstance().setInfo("CITY SPAWNING: [" + held.getI1() + ", " + held.getI2() + "]");
         }
     }
 

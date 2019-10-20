@@ -15,9 +15,7 @@ public class Introduction extends PObject {
     }
 
     @Override
-    public void update() {
-
-    }
+    public void update() { }
 
     @Override
     public void render() {

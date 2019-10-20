@@ -22,6 +22,16 @@ public class Assets {
     private SoundFile sound;
 
     private int money = 2000;
+    private String info = "";
+    private int wave = 0;
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
 
     public void addMoney(int money) {
         this.money += money;
@@ -31,6 +41,33 @@ public class Assets {
 
     public int getMoney() {
         return money;
+    }
+
+    public int getWave() {
+        return wave;
+    }
+
+    public double getMultiplyer() {
+        switch (wave) {
+            case 0: case 1:
+                return 0.4;
+            case 2: case 3: case 4: case 5:
+                return 0.5;
+            case 6: case 7: case 8: case 9:
+                return 0.6;
+            case 10: case 11: case 12: case 13:
+                return 0.7;
+            case 14: case 15: case 16: case 17:
+                return 0.8;
+            case 18: case 19: case 20: case 21:
+                return 0.9;
+            default:
+                return 1;
+        }
+    }
+
+    public void nextWave() {
+        this.wave += 1;
     }
 
     public void load(PApplet applet) {

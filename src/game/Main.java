@@ -8,6 +8,7 @@ public class Main extends PApplet {
     private Map map;
     private Selector selector;
     private Money money;
+    private Info info;
     private Introduction intro;
 
     @Override
@@ -32,6 +33,7 @@ public class Main extends PApplet {
     public void startGame() {
         map = new Map(this);
         selector = new Selector(this);
+        info = new Info(this);
         money = new Money(this);
     }
 
@@ -51,10 +53,12 @@ public class Main extends PApplet {
             map.update();
             selector.update();
             money.update();
+            info.update();
 
             map.render();
             selector.render();
             money.render();
+            info.render();
         }
     }
 
@@ -101,7 +105,6 @@ public class Main extends PApplet {
         } else {
             if(key == ' ') {
                 intro.key();
-                System.out.println("woo");
             }
         }
     }

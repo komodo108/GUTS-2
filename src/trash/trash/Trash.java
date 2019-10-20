@@ -16,11 +16,15 @@ import static game.Constants.Type.WASTE;
 
 public class Trash extends ATrash implements ITrash {
     private List<ATrashParticle> particles = new ArrayList<>();
+    private PVector drawn, size;
 
     public Trash(PApplet applet, int x, int y) {
         super(applet, OTHER, x, y);
         width = TRASH_SIZE;
         height = TRASH_SIZE;
+
+        drawn = new PVector(applet.random(20), applet.random(20));
+        size = new PVector(applet.random(-5, 5), applet.random(-5, 5));
     }
 
     @Override
@@ -106,15 +110,19 @@ public class Trash extends ATrash implements ITrash {
             } particles.add(particle);
         }
 
-        double money = 0;
-        for(ATrashParticle trash : particles) {
-            if((int) applet.random(15) == 0) money += trash.getType().equals(WASTE) ? 0.1 : 0.3;
-            trash.update();
-        } Assets.getInstance().addMoney((int) -money);
+        if((int) applet.random((int) (20 / Assets.getInstance().getMultiplyer())) == 0) {
+            double money = 0;
+            for (ATrashParticle trash : particles) {
+                if ((int) applet.random(15) == 0) money += trash.getType().equals(WASTE) ? 0.1 : 0.3;
+                trash.update();
+            } Assets.getInstance().addMoney((int) -money);
+        }
     }
 
     @Override
     public void render() {
+        applet.fill(180);
+        applet.rect(pos.x + (int) drawn.x, pos.y + (int) drawn.y, 30 + (int) size.x, 30 + (int) size.y);
         for(ATrashParticle trash : particles) {
             trash.render();
         }
